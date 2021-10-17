@@ -63,7 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomWing.cs" />
+    <Compile Include="RawUI\WingButton.cs" />
+    <Compile Include="RawUI\WingPage.cs" />
     <Compile Include="Wing.cs" />
     <Compile Include="WingAPI.cs" />
   </ItemGroup>

@@ -36,38 +36,6 @@ namespace KiraiMod.WingAPI
 
             public Transform ProfilePage;
             public Transform ProfileButton;
-
-            public CustomWing CreateCategory(string name)
-            {
-                CustomWing wing = new CustomWing();
-
-                wing.wing = this;
-                wing.page = Object.Instantiate(ProfilePage, WingPages);
-                Transform content = wing.page.Find("ScrollRect/Viewport/VerticalLayoutGroup");
-                wing.page.gameObject.SetActive(false);
-                for (int i = 0; i < content.GetChildCount(); i++)
-                    Object.Destroy(content.GetChild(i).gameObject);
-                wing.page.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
-                Button closeButton = wing.page.GetComponentInChildren<Button>();
-                wing.closeButton = closeButton.transform;
-                closeButton.onClick = new Button.ButtonClickedEvent();
-                closeButton.onClick.AddListener(new System.Action(() => 
-                {
-                    wing.page.gameObject.SetActive(false);
-                    WingMenu.gameObject.SetActive(true);
-                }));
-
-                wing.openButton = Object.Instantiate(ProfileButton, WingButtons);
-                wing.openButton.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
-                Button bc = wing.openButton.GetComponent<Button>();
-                bc.onClick = new Button.ButtonClickedEvent();
-                bc.onClick.AddListener(new System.Action(() => {
-                    wing.page.gameObject.SetActive(true);
-                    WingMenu.gameObject.SetActive(false);
-                }));
-
-                return wing;
-            }
         }
     }
 }
