@@ -11,6 +11,7 @@ namespace KiraiMod.WingAPI.RawUI
         {
             Transform button = Object.Instantiate(wing.ProfileButton, parent);
             button.transform.localPosition = new Vector3(button.transform.localPosition.x, pos, button.transform.localPosition.z);
+            button.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);
 
             (text = button.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
 
