@@ -13,9 +13,9 @@ If you believe any features to be missing, create an [issue](https://github.com/
 // OnApplicationStart:
 WingAPI.WingAPI.OnWingInit += new System.Action<Wing.BaseWing>(wing =>
 {
-  WingPage page = wing.CreatePage("KiraiMod");
+  WingPage   page   = wing.CreatePage("KiraiMod");
   WingToggle toggle = page.CreateToggle("Flight", 0, UnityEngine.Color.green, UnityEngine.Color.red, false, new System.Action<bool>(state => Modules.Flight.State = state));
-  });
+});
 ```
 
 # Notes
