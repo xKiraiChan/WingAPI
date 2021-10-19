@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions.cs" />
     <Compile Include="RawUI\WingToggle.cs" />
     <Compile Include="RawUI\WingButton.cs" />
     <Compile Include="RawUI\WingPage.cs" />

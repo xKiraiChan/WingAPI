@@ -5,19 +5,38 @@ namespace KiraiMod.WingAPI.RawUI
 {
     public class WingButton
     {
+        public Wing.BaseWing wing;
         public TMPro.TextMeshProUGUI text;
+        public Transform transform;
 
         public WingButton(Wing.BaseWing wing, string name, Transform parent, int pos, System.Action onClick)
         {
-            Transform button = Object.Instantiate(wing.ProfileButton, parent);
-            button.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);
-            button.transform.localPosition = new Vector3(0, pos, button.transform.localPosition.z);
+            this.wing = wing;
 
-            (text = button.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
+            transform = Object.Instantiate(wing.ProfileButton, parent);
+            transform.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);
+            transform.transform.localPosition = new Vector3(0, pos, transform.transform.localPosition.z);
 
-            Button bc = button.GetComponent<Button>();
-            bc.onClick = new Button.ButtonClickedEvent();
-            bc.onClick.AddListener(onClick);
+            (text = transform.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
+
+            Button button = transform.GetComponent<Button>();
+            button.onClick = new Button.ButtonClickedEvent();
+            button.onClick.AddListener(onClick);
+        }
+
+        public WingButton(WingPage page, string name, int index, System.Action onClick)
+        {
+            wing = page.wing;
+
+            Transform transform = Object.Instantiate(wing.ProfileButton, page.transform);
+            transform.GetComponent<RectTransform>().sizeDelta = new Vector2(420, 144);
+            transform.transform.localPosition = new Vector3(0, 320 - (index * 120), transform.transform.localPosition.z);
+
+            (text = transform.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
+
+            Button button = transform.GetComponent<Button>();
+            button.onClick = new Button.ButtonClickedEvent();
+            button.onClick.AddListener(onClick);
         }
     }
 }

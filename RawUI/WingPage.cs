@@ -5,26 +5,29 @@ namespace KiraiMod.WingAPI.RawUI
 {
     public class WingPage
     {
-        public Transform page;
+        public Wing.BaseWing wing;
+        public Transform transform;
         public TMPro.TextMeshProUGUI text;
         public Button closeButton;
         public Button openButton;
 
         public WingPage(Wing.BaseWing wing, string name)
         {
-            page = Object.Instantiate(wing.ProfilePage, wing.WingPages);
-            Transform content = page.Find("ScrollRect/Viewport/VerticalLayoutGroup");
-            page.gameObject.SetActive(false);
+            this.wing = wing;
+
+            transform = Object.Instantiate(wing.ProfilePage, wing.WingPages);
+            Transform content = transform.Find("ScrollRect/Viewport/VerticalLayoutGroup");
+            transform.gameObject.SetActive(false);
 
             for (int i = 0; i < content.GetChildCount(); i++)
                 Object.Destroy(content.GetChild(i).gameObject);
-            page.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
+            transform.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = name;
 
-            closeButton = page.GetComponentInChildren<Button>();
+            closeButton = transform.GetComponentInChildren<Button>();
             closeButton.onClick = new Button.ButtonClickedEvent();
             closeButton.onClick.AddListener(new System.Action(() =>
             {
-                page.gameObject.SetActive(false);
+                transform.gameObject.SetActive(false);
                 wing.WingMenu.gameObject.SetActive(true);
             }));
 
@@ -34,7 +37,7 @@ namespace KiraiMod.WingAPI.RawUI
             openButton = open.GetComponent<Button>();
             openButton.onClick = new Button.ButtonClickedEvent();
             openButton.onClick.AddListener(new System.Action(() => {
-                page.gameObject.SetActive(true);
+                transform.gameObject.SetActive(true);
                 wing.WingMenu.gameObject.SetActive(false);
             }));
         }
