@@ -13,10 +13,9 @@ If you believe any features to be missing, create an [issue](https://github.com/
 // OnApplicationStart:
 WingAPI.WingAPI.OnWingInit += new System.Action<Wing.BaseWing>(wing =>
 {
-    WingAPI.RawUI.WingPage page = new WingAPI.RawUI.WingPage(wing, "Example Menu");
-    WingAPI.RawUI.WingButton button = new WingAPI.RawUI.WingButton(wing, "Example Button", page.page, 320, 
-        new System.Action(() => MelonLogger.Msg("Clicked")));
-});
+  WingPage page = wing.CreatePage("KiraiMod");
+  WingToggle toggle = page.CreateToggle("Flight", 0, UnityEngine.Color.green, UnityEngine.Color.red, false, new System.Action<bool>(state => Modules.Flight.State = state));
+  });
 ```
 
 # Notes
@@ -27,10 +26,10 @@ WingAPI.WingAPI.OnWingInit += new System.Action<Wing.BaseWing>(wing =>
 - API
   - [X] Basic Raw
   - [ ] Advanced Raw
-  - [ ] Simplistic
+  - [x] Simplistic
   - [ ] Reflective
 - Features
   - [x] Pages
   - [x] Buttons 
-  - [ ] Toggles
+  - [x] Toggles
   - [ ] Sliders
