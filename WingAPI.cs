@@ -4,7 +4,7 @@ using System.Collections;
 using UnityEngine;
 using static KiraiMod.WingAPI.Wing;
 
-[assembly: MelonInfo(typeof(KiraiMod.WingAPI.WingAPI), "WingAPI", "0.2.0", "Kirai Chan", "github.com/xKiraiChan/WingAPI")]
+[assembly: MelonInfo(typeof(KiraiMod.WingAPI.WingAPI), "WingAPI", "0.2.1", "Kirai Chan", "github.com/xKiraiChan/WingAPI")]
 [assembly: MelonGame("VRChat", "VRChat")]
 [assembly: MelonColor(ConsoleColor.Yellow)]
 
