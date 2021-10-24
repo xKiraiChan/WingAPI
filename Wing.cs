@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using KiraiMod.WingAPI.RawUI;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace KiraiMod.WingAPI
 {
@@ -15,6 +17,8 @@ namespace KiraiMod.WingAPI
 
         public class BaseWing
         {
+            public List<WingPage> openedPages = new List<WingPage>();
+
             internal void Setup(Transform wing)
             {
                 Wing = wing;

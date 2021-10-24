@@ -6,8 +6,6 @@ namespace KiraiMod.WingAPI.RawUI
 {
     public class WingPage
     {
-        public static List<WingPage> openedPages = new List<WingPage>();
-
         public Wing.BaseWing wing;
         public Transform transform;
         public TMPro.TextMeshProUGUI text;
@@ -31,10 +29,10 @@ namespace KiraiMod.WingAPI.RawUI
             closeButton.onClick.AddListener(new System.Action(() =>
             {
                 transform.gameObject.SetActive(false);
-                openedPages.RemoveAt(openedPages.Count - 1);
-                if (openedPages.Count > 0)
+                wing.openedPages.RemoveAt(wing.openedPages.Count - 1);
+                if (wing.openedPages.Count > 0)
                 {
-                    WingPage prev = openedPages[openedPages.Count - 1];
+                    WingPage prev = wing.openedPages[wing.openedPages.Count - 1];
                     prev.transform.gameObject.SetActive(true);
                 }
                 else wing.WingMenu.gameObject.SetActive(true);
@@ -47,10 +45,10 @@ namespace KiraiMod.WingAPI.RawUI
             openButton.onClick = new Button.ButtonClickedEvent();
             openButton.onClick.AddListener(new System.Action(() => {
                 transform.gameObject.SetActive(true);
-                openedPages.Add(this);
-                if (openedPages.Count > 1)
+                wing.openedPages.Add(this);
+                if (wing.openedPages.Count > 1)
                 {
-                    WingPage prev = openedPages[openedPages.Count - 2];
+                    WingPage prev = wing.openedPages[wing.openedPages.Count - 2];
                     prev.transform.gameObject.SetActive(false);
                 }
                 else wing.WingMenu.gameObject.SetActive(false);
@@ -74,10 +72,10 @@ namespace KiraiMod.WingAPI.RawUI
             closeButton.onClick.AddListener(new System.Action(() =>
             {
                 transform.gameObject.SetActive(false);
-                openedPages.RemoveAt(openedPages.Count - 1);
-                if (openedPages.Count > 0)
+                wing.openedPages.RemoveAt(wing.openedPages.Count - 1);
+                if (wing.openedPages.Count > 0)
                 {
-                    WingPage prev = openedPages[openedPages.Count - 1];
+                    WingPage prev = wing.openedPages[wing.openedPages.Count - 1];
                     prev.transform.gameObject.SetActive(true);
                 } else wing.WingMenu.gameObject.SetActive(true);
             }));
@@ -92,10 +90,10 @@ namespace KiraiMod.WingAPI.RawUI
             openButton.onClick.AddListener(new System.Action(() =>
             {
                 transform.gameObject.SetActive(true);
-                openedPages.Add(this);
-                if (openedPages.Count > 1)
+                wing.openedPages.Add(this);
+                if (wing.openedPages.Count > 1)
                 {
-                    WingPage prev = openedPages[openedPages.Count - 2];
+                    WingPage prev = wing.openedPages[wing.openedPages.Count - 2];
                     prev.transform.gameObject.SetActive(false);
                 }
                 else wing.WingMenu.gameObject.SetActive(false);
