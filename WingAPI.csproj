@@ -1,36 +1,30 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
 		<LangVersion>preview</LangVersion>
+		<RestoreAdditionalProjectSources>
+			https://nuget.bepinex.dev/v3/index.json;
+			https://nuget.kiraihooks.me/v3/index.json;
+		</RestoreAdditionalProjectSources>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\KiraiMod.Core\KiraiMod.Core.csproj" />
+		<None Remove=".gitignore" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Reference Include="BepInEx.Core">
-	    <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat.BepInEx\BepInEx\core\BepInEx.Core.dll</HintPath>
-	  </Reference>
-	  <Reference Include="BepInEx.IL2CPP">
-	    <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat.BepInEx\BepInEx\core\BepInEx.IL2CPP.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Il2Cppmscorlib">
-	    <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat.BepInEx\BepInEx\unhollowed\Il2Cppmscorlib.dll</HintPath>
-	  </Reference>
-	  <Reference Include="UnhollowerBaseLib">
-	    <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat.BepInEx\BepInEx\core\UnhollowerBaseLib.dll</HintPath>
-	  </Reference>
-	  <Reference Include="Unity.TextMeshPro">
-	    <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat.BepInEx\BepInEx\unhollowed\Unity.TextMeshPro.dll</HintPath>
-	  </Reference>
-	  <Reference Include="UnityEngine.CoreModule">
-	    <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat.BepInEx\BepInEx\unhollowed\UnityEngine.CoreModule.dll</HintPath>
-	  </Reference>
-	  <Reference Include="UnityEngine.UI">
-	    <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat.BepInEx\BepInEx\unhollowed\UnityEngine.UI.dll</HintPath>
-	  </Reference>
+		<PackageReference Include="xKiraiChan.TypeScanner" Version="0.*" />
+		<PackageReference Include="KiraiMod.Core" Version="0.*" />
+		<PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-be.*" />
+		<PackageReference Include="BepInEx.IL2CPP.MSBuild" Version="*" PrivateAssets="all" />
+		<PackageReference Include="VRC.GameLibs" Version="*-*" PrivateAssets="all" />
 	</ItemGroup>
+
+	<PropertyGroup>
+		<RepositoryUrl>https://github.com/KiraiMod/Core</RepositoryUrl>
+		<PackageVersion>$([System.DateTime]::Now.ToString("0.yyyy.MMdd.HHmm"))</PackageVersion>
+		<AssemblyVersion>$(PackageVersion)</AssemblyVersion>
+	</PropertyGroup>
 
 </Project>
