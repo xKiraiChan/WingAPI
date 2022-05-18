@@ -22,9 +22,11 @@
 	</ItemGroup>
 
 	<PropertyGroup>
-		<RepositoryUrl>https://github.com/KiraiMod/Core</RepositoryUrl>
+		<RepositoryUrl>https://github.com/xKiraiChan/WingAPI</RepositoryUrl>
 		<PackageVersion>$([System.DateTime]::Now.ToString("0.yyyy.MMdd.HHmm"))</PackageVersion>
 		<AssemblyVersion>$(PackageVersion)</AssemblyVersion>
+		<Authors>xKiraiChan</Authors>
+		<PackageId>xKiraiChan.WingAPI</PackageId>
 	</PropertyGroup>
 
 </Project>
