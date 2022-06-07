@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
@@ -7,6 +8,8 @@ namespace WingAPI
 {
     public class WingPage
     {
+        public readonly List<WingPage> subpages = new();
+
         public Wing wing;
         public Transform transform;
         public TMPro.TextMeshProUGUI text;
@@ -52,7 +55,7 @@ namespace WingAPI
             (text = open.GetComponentInChildren<TMPro.TextMeshProUGUI>()).text = name;
 
             openButton.onClick = new Button.ButtonClickedEvent();
-            openButton.onClick.AddListener(new System.Action(() => {
+            openButton.onClick.AddListener(new Action(() => {
                 transform.gameObject.SetActive(true);
                 wing.openedPages.Add(this);
                 if (wing.openedPages.Count > 1)
@@ -62,6 +65,8 @@ namespace WingAPI
                 }
                 else wing.WingMenu.gameObject.SetActive(false);
             }));
+
+            subpages.Add(this);
         }
 
         public WingPage CreateNestedPage(string name, int index) => new(wing, name, index, transform);

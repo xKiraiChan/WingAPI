@@ -15,10 +15,16 @@
 
 	<ItemGroup>
 		<PackageReference Include="xKiraiChan.TypeScanner" Version="0.*" />
-		<PackageReference Include="KiraiMod.Core" Version="0.*" />
+		<PackageReference Include="KiraiMod.Core" Version="0.*" Condition="'$(GITHUB_ACTIONS)'=='true'" />
 		<PackageReference Include="BepInEx.IL2CPP" Version="6.0.0-be.*" />
 		<PackageReference Include="BepInEx.IL2CPP.MSBuild" Version="*" PrivateAssets="all" />
 		<PackageReference Include="VRC.GameLibs" Version="*-*" PrivateAssets="all" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Reference Include="KiraiMod.Core" Condition="'$(GITHUB_ACTIONS)'!='true'" >
+	    <HintPath>C:\Program Files (x86)\Steam\steamapps\common\VRChat.BepInEx\BepInEx\plugins\KiraiMod\KiraiMod.Core.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<PropertyGroup>

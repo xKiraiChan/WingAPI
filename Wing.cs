@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using KiraiMod.Core.Utils;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace WingAPI
@@ -17,6 +18,23 @@ namespace WingAPI
             WingButtons = WingPages.Find("WingMenu/ScrollRect/Viewport/VerticalLayoutGroup");
             ProfilePage = WingPages.Find("Profile");
             ProfileButton = WingButtons.Find("Button_Profile");
+
+            bool firstTime = true;
+            ActivationListener listener = Memory.QuickMenu.gameObject.GetOrAddComponent<ActivationListener>();
+            listener.Enabled += () =>
+            {
+                if (firstTime)
+                {
+                    firstTime = false;
+                    return;
+                }
+
+                if (openedPages.Count > 0)
+                    WingMenu.gameObject.SetActive(false);
+
+                for (int i = 0; i < openedPages.Count - 1; i++)
+                    openedPages[i].transform.gameObject.SetActive(false);
+            };
         }
 
         public readonly bool IsRight;
